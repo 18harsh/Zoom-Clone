@@ -3,7 +3,7 @@ const videoGrid = document.getElementById('video-grid')
 const myPeer = new Peer(undefined, {
   path: '/peerjs',
   host: '/',
-  port: '443'
+  port: '3030'
 })
 
 let myVideoStream;
@@ -47,6 +47,10 @@ navigator.mediaDevices.getUserMedia({
     scrollToBottom()
   })
 })
+
+const leave = () => {
+    
+}
 
 socket.on('user-disconnected', userId => {
   if (peers[userId]) peers[userId].close()
@@ -133,4 +137,10 @@ const setPlayVideo = () => {
     <span>Play Video</span>
   `
   document.querySelector('.main__video_button').innerHTML = html;
+}
+
+function close_window() {
+  if (confirm("Close Window?")) {
+    close();
+  }
 }
